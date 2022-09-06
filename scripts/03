@@ -1,0 +1,22 @@
+#!/bin/bash
+
+sudo_user () {
+    sudo usermod -aG sudo $1
+    STATUS=$?
+    [ $STATUS -eq 0 ] && echo " \n ##### $USERNAME successfully added to sudoers #####  \n" || echo "Something went wrong."
+}
+
+add_user () {
+    read -p "Enter username to create: " USERNAME
+    sudo adduser --force-badname $USERNAME    
+    sudo_user "$USERNAME"
+}
+
+while true; do
+    read -p "## Press 1 if you want to create new sudo user, and 2 if you want to add an existing user to sudoers. [1/2]:" ans
+    case $ans in
+        [1]* ) add_user; break;; 
+        [2]* ) read -p "Enter username to add to sudoers: " USERNAME; sudo_user "$USERNAME"; exit;;
+        * ) echo "1 or 2 please";;
+    esac
+done

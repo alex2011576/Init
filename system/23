@@ -1,0 +1,2 @@
+# in graphical session: we launch the VM and we connect by filling in login/password (username/password)
+# in ssh session we write ssh username@ipadress then the password

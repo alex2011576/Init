@@ -1,0 +1,9 @@
+function findbroadcast {
+	ifconfig -v | grep -w "broadcast\|type:" | grep -w -B 1 "Ethernet" | grep -o "broadcast.*" | awk '{print $2}'
+}
+var=$(findbroadcast)
+base=$(findbroadcast | sed 's/\.255.*//')
+echo "Broadcast adress: $var"
+#echo "$base"
+ping -t 2 $var 1> /dev/null 2> /dev/null
+arp -a | grep -o "$base.*" | sed 's/).*//' | sort -t . -k 1,1n -k 2,2n -k3,3n -k 4,4n -u

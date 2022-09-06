@@ -1,0 +1,29 @@
+#!/bin/bash
+
+delete_user () {
+          sudo  userdel -rf $1 > /dev/null 2>&1
+    STATUS=$?
+    [ $STATUS -eq 0 ] && echo "\n ##### $1 is deleted! ##### \n" || echo "\n ##### To give sudo rights to user run script 03 as a sudoer. ##### \n"
+}
+
+USERNAME=$(whoami)
+
+if [ $USERNAME = 'ashatalo' ]
+then 
+    echo "\n ##### You don't want to delete this user believe me ##### \n"
+    exit 0
+fi
+if [ $USERNAME = 'root' ]
+then
+    echo "\n ##### You can't possibly delete root user. Just won't work ##### \n"
+    exit 0
+fi
+
+while true; do
+    read -p "Do you wish to delete $USERNAME with all it's data? [Y/n]" yn
+    case $yn in
+       [Yy]* ) delete_user "$USERNAME"; break;;
+       [Nn]* ) echo "Good choice, bye!"; exit;;
+        * ) echo "Please answer [Y/n].";;
+     esac
+done

@@ -1,0 +1,6 @@
+#There are several  options:
+#First I tried: "whois who.int", but it didn't give any info about Reseller or Registar,
+#so I "ping who.int" get ip 104.17.113.188 and do "whois 104.17.113.118" and get information about the organization owning the ip.
+#we canntot 100% say the the owner is the host, but it is our best bet unless we have some cridentials
+#Organization: Cloudfare
+#another one is if you use ping/traceroute/dig you can get information about the hos if you put 'www.' before the domain name, e.g. "ping www.who.int"

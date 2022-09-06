@@ -1,0 +1,7 @@
+Server:		10.51.1.253
+Address:	10.51.1.253#53
+
+5.3.12.10.in-addr.arpa	name = c2r3p5.hive.fi.
+
+#command:
+#nslookup 10.12.3.5
